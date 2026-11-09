@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dangerous-pod
+  namespace: backend-ns
+spec:
+  containers:
+  - name: dangerous
+    image: nginx:alpine
+    volumeMounts:
+    - name: host-root
+      mountPath: /host
+  volumes:
+  - name: host-root
+    hostPath:
+      path: /
+      type: Directory
